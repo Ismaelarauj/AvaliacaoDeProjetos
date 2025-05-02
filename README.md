@@ -5,7 +5,7 @@ Este é o frontend do sistema para gerenciamento de prêmios, autores, avaliador
 ## Telas do Sistema
 
 Clique nos links abaixo para visualizar cada tela diretamente:
-
+- [Gerenciamento de Login](https://avaliacao-de-projetos.vercel.app/login)
 - [Gerenciamento de Prêmios](https://avaliacao-de-projetos.vercel.app/premios)
 - [Gerenciamento de Autores](https://avaliacao-de-projetos.vercel.app/autores)
 - [Gerenciamento de Avaliadores](https://avaliacao-de-projetos.vercel.app/avaliadores)
