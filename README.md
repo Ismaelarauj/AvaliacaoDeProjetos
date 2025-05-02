@@ -1,12 +1,19 @@
-# React + Vite
+# Sistema de Avaliação de Projetos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é o frontend do sistema para gerenciamento de prêmios, autores, avaliadores, envio e avaliação de projetos, e lista de vencedores. As telas foram implementadas com React, Material-UI e dados mockados.
 
-Currently, two official plugins are available:
+## Telas do Sistema
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Clique nos links abaixo para visualizar cada tela diretamente:
 
-## Expanding the ESLint configuration
+- [Gerenciamento de Prêmios](https://avaliacao-de-projetos.vercel.app/premios)
+- [Gerenciamento de Autores](https://avaliacao-de-projetos.vercel.app/autores)
+- [Gerenciamento de Avaliadores](https://avaliacao-de-projetos.vercel.app/avaliadores)
+- [Envio de Projeto](https://avaliacao-de-projetos.vercel.app/projetos/enviar)
+- [Avaliação de Projeto](https://avaliacao-de-projetos.vercel.app/projetos/avaliar)
+- [Lista de Vencedores](https://avaliacao-de-projetos.vercel.app/vencedores)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Instruções
+- O projeto está hospedado na Vercel.
+- Os dados são mockados para visualização.
+- Código-fonte disponível neste repositório.
