@@ -1,101 +1,113 @@
 import React, { useState, useEffect } from 'react';
-import { TextField, Button, Container, Typography, Box, MenuItem, Select, InputLabel, FormControl } from '@mui/material';
-import api from '../services/api.js';
+import { Container, Typography, Box, TextField, Button, MenuItem } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 const EnvioProjeto = () => {
+    const [premios, setPremios] = useState([]);
     const [formData, setFormData] = useState({
         premioId: '',
-        areaTematica: '',
         titulo: '',
         resumo: '',
-        coautores: '',
+        areaTematica: '',
+        coautores: [],
+        dataEnvio: new Date().toISOString().split('T')[0],
     });
-    const [premios, setPremios] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchPremios = async () => {
-            const mockData = [
-                { id: 1, nome: 'Prêmio Inovação 2025' },
-            ];
-            setPremios(mockData);
-        };
         fetchPremios();
     }, []);
+
+    const fetchPremios = async () => {
+        const mockData = [
+            { id: 1, nome: 'Prêmio Inovação 2025' },
+        ];
+        setPremios(mockData);
+    };
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        alert('Ação desativada para visualização');
+    const handleCoautoresChange = (e) => {
+        setFormData({ ...formData, coautores: e.target.value.split(',').map((id) => id.trim()) });
     };
 
-    const handleDelete = async (id) => {
-        alert('Ação desativada para visualização');
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        alert('Projeto enviado (simulação)');
+        navigate('/projetos/enviar');
     };
 
     return (
-        <Container maxWidth="sm">
+        <Container maxWidth="md">
             <Box sx={{ mt: 4 }}>
                 <Typography variant="h4" gutterBottom>
                     Envio de Projeto
                 </Typography>
                 <form onSubmit={handleSubmit}>
-                    <FormControl fullWidth margin="normal">
-                        <InputLabel>Prêmio</InputLabel>
-                        <Select
-                            name="premioId"
-                            value={formData.premioId}
-                            onChange={handleChange}
-                            required
-                        >
-                            <MenuItem value="">Selecione um prêmio</MenuItem>
-                            {premios.map((premio) => (
-                                <MenuItem key={premio.id} value={premio.id}>
-                                    {premio.nome}
-                                </MenuItem>
-                            ))}
-                        </Select>
-                    </FormControl>
                     <TextField
-                        label="Área Temática"
-                        name="areaTematica"
+                        select
+                        label="Prêmio"
+                        name="premioId"
+                        value={formData.premioId}
+                        onChange={handleChange}
                         fullWidth
                         margin="normal"
-                        value={formData.areaTematica}
-                        onChange={handleChange}
                         required
-                    />
+                    >
+                        {premios.map((premio) => (
+                            <MenuItem key={premio.id} value={premio.id}>
+                                {premio.nome}
+                            </MenuItem>
+                        ))}
+                    </TextField>
                     <TextField
                         label="Título"
                         name="titulo"
-                        fullWidth
-                        margin="normal"
                         value={formData.titulo}
                         onChange={handleChange}
+                        fullWidth
+                        margin="normal"
                         required
                     />
                     <TextField
                         label="Resumo"
                         name="resumo"
+                        value={formData.resumo}
+                        onChange={handleChange}
                         fullWidth
                         margin="normal"
                         multiline
                         rows={4}
-                        value={formData.resumo}
-                        onChange={handleChange}
                         required
                     />
                     <TextField
-                        label="Coautores (separados por vírgula)"
-                        name="coautores"
+                        label="Área Temática"
+                        name="areaTematica"
+                        value={formData.areaTematica}
+                        onChange={handleChange}
                         fullWidth
                         margin="normal"
-                        value={formData.coautores}
-                        onChange={handleChange}
+                        required
                     />
-                    <Button type="submit" variant="contained" color="primary" fullWidth sx={{ mt: 2 }}>
+                    <TextField
+                        label="Coautores (IDs separados por vírgula)"
+                        name="coautores"
+                        value={formData.coautores.join(',')}
+                        onChange={handleCoautoresChange}
+                        fullWidth
+                        margin="normal"
+                    />
+                    <TextField
+                        label="Data de Envio"
+                        name="dataEnvio"
+                        value={formData.dataEnvio}
+                        fullWidth
+                        margin="normal"
+                        disabled
+                    />
+                    <Button type="submit" variant="contained" sx={{ mt: 2 }}>
                         Enviar Projeto
                     </Button>
                 </form>
